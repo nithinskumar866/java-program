@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>login page</title>
+  <style>
+    .login {
+      max-width: 400px;
+      margin: 200px auto;
+      padding: 40px;
+      background-color: beige;
+      border: 2px solid rgb(7, 7, 7);
+      border-radius: 5px;
+      box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      margin-top: 10;
+      color: black;
+      text-align: center;
+      text-decoration: underline;
+
+    }
+
+
+    .loginform {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+  </style>
+  
+</head>
+
+<body>
+  <center>
+    <div class="login">
+      <h2>login form</h2>
+      <form class="loginform" id="loginform">
+        <label for="name">Name:</label>
+        <input type="text" placeholder="Enter the name" id="name"><br>
+        
+        <label for="Gender">Gender:</label>
+        <select id="Gender">
+          <option value="male">Male</option>
+          <option value="Female">Female</option>
+        </select><br>
+        <label for="Number">Enter the number: </label>
+        <input type="text" placeholder="Enter the number" id="number"><br>
+        <label for="Email">Enter the email</label>
+        <input type="email" placeholder="Enter the email" id="mail"><br>
+        <label for="Password">Enter the password </label>
+        <input type="password" placeholder="Enter the password" id="password"><br>
+        
+        <button onclick="sub(event)">submit</button>
+
+      </form>
+  </center>
+
+  </div>
+
+  <script>
+    function sub(event) {
+    event.preventDefault(); // Prevent form submission
+
+    document.getElementById("name").innerHTML=""
+    document.getElementById("age").innerHTML=""
+    document.getElementById("gender").innerHTML=""
+    var email=document.getElementById("mail")
+    var number=document.getElementById("number").innerHTML=""
+    var password=document.getElementById("password").innerHTML=""
+    var confirmPassword=document.getElementById("conpass").innerHTML=""
+    // Email validation
+    if (!email.includes("@gmail.com")) {
+        alert("Please enter a valid email that contains '@gmail.com'.");
+        return;
+    }
+
+    // Number validation
+    if (number.length !== 10 || !/^\d{10}$/.test(number)) {
+        alert("Please enter a valid 10-digit phone number.");
+        return;
+    }
+
+    // Password validation
+    if (password.length < 8 || !/^(?=.*[a-zA-Z])(?=.*[0-9])/.test(password)) {
+        alert("Password must be at least 8 characters long and alphanumeric.");
+        return;
+    }
+
+    // Confirm password validation
+    if (password !== confirmPassword) {
+        alert("Password and confirm password do not match.");
+        return;
+    }
+
+    // If all validations pass, submit the form
+    alert("Form submitted successfully!");
+    document.getElementById('loginform').submit();
+};
+
+  </script>
+</body>
+
+</html>
